@@ -36,8 +36,8 @@ export default function AboutPage() {
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="lg:col-span-6">
             <span className="eyebrow">Company Overview</span>
-            <h2 className="h-1 mt-5 text-balance">From Indian farms to global tables.</h2>
-            <p className="text-ink-500 mt-6 leading-[1.8]">Globeon Exim is an India-based export company specializing in premium agricultural and natural products. We connect carefully selected Indian producers — from organic moringa cultivators in the south to turmeric farmers in central India — with discerning buyers across 25+ countries.</p>
+            <h2 className="mt-5 text-balance text-4xl md:text-5xl font-bold text-ink-900">From Indian farms to global tables.</h2>
+            <p className="text-ink-500 mt-6 leading-[1.8]">Globeon Exim is an India-based export company specializing in premium agricultural and natural products. We connect carefully selected Indian producers - from organic moringa cultivators in the south to turmeric farmers in central India - with discerning buyers across 25+ countries.</p>
             <p className="text-ink-500 mt-4 leading-[1.8]">Our integrated approach combines direct farm sourcing, rigorous quality control, modern packaging facilities, and a global logistics network. The result: consistent, certified and competitively-priced products you can trust.</p>
             <div className="grid sm:grid-cols-2 gap-x-6 gap-y-3 mt-8">
               {['IEC Registered Exporter','APEDA & Spices Board Member','Direct Farmer Network','Global Logistics Partners','Lab-Tested Quality Reports','Custom Private Labeling'].map(i => (
@@ -53,7 +53,7 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-3 gap-px bg-ink-900/10 rounded-2xl overflow-hidden border border-ink-900/10">
             {[
               { icon: Target, title: 'Our Mission', desc: 'To deliver authentic, premium-quality Indian agricultural products to global markets through ethical sourcing, transparent processes and unwavering reliability.' },
-              { icon: Eye, title: 'Our Vision', desc: 'To become the most trusted name in Indian agro-exports — recognized for quality, sustainability and the strong bridge we build between Indian farmers and the world.' },
+              { icon: Eye, title: 'Our Vision', desc: 'To become the most trusted name in Indian agro-exports - recognized for quality, sustainability and the strong bridge we build between Indian farmers and the world.' },
               { icon: Heart, title: 'Our Promise', desc: 'Every shipment carries our commitment: certified quality, on-time delivery and a partnership that lasts well beyond the first order.' },
             ].map((c, i) => (
               <motion.div key={c.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="bg-white p-10">
@@ -86,8 +86,9 @@ export default function AboutPage() {
       <section className="section-pad bg-brand-paper">
         <div className="container grid lg:grid-cols-12 gap-12 items-center">
           <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="lg:col-span-6">
+            
             <span className="eyebrow">Global Trade Commitment</span>
-            <h2 className="h-1 mt-5 text-balance">A world-class standard, delivered globally.</h2>
+            <h2 className="mt-5 text-balance text-4xl md:text-5xl font-bold text-ink-900">A world-class standard, delivered globally.</h2>
             <p className="text-ink-500 mt-6 leading-[1.8]">From the moment a buyer reaches out to the moment our products reach their warehouse, every step is owned end-to-end. Our team handles documentation, certification, packaging, and global logistics so partners can focus on their core business.</p>
             <div className="flex items-center gap-3 mt-7"><Globe2 className="w-5 h-5 text-brand-green" /><p className="font-display font-semibold text-ink-900">Active across North America, Europe, Middle East, SEA & Africa</p></div>
             <Link href="/contact" className="btn-primary mt-8">Start a Conversation<ArrowUpRight className="w-4 h-4" /></Link>

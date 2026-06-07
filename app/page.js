@@ -29,13 +29,13 @@ const processSteps = [
   { icon: ShieldCheck, title: 'Quality Verification', desc: 'Multi-stage lab testing for purity, potency, pesticides and metals.' },
   { icon: PackageCheck, title: 'Packaging', desc: 'Food-grade, durable, fully customizable packaging for long-haul shipping.' },
   { icon: FileCheck2, title: 'Documentation', desc: 'CoA, phyto-sanitary, customs and country-specific compliance handled.' },
-  { icon: Ship, title: 'Global Delivery', desc: 'FCL, LCL, air freight — to your port, warehouse or doorstep worldwide.' },
+  { icon: Ship, title: 'Global Delivery', desc: 'FCL, LCL, air freight - to your port, warehouse or doorstep worldwide.' },
 ];
 
 export default function HomePage() {
   return (
     <>
-      {/* HERO — editorial split */}
+      {/* HERO - editorial split */}
       <section className="relative overflow-hidden bg-brand-paper">
         <div className="absolute inset-0 grid-pattern-soft opacity-60" />
         <div className="absolute top-0 right-0 w-[55%] h-full bg-gradient-to-bl from-accent/50 to-transparent" />
@@ -50,7 +50,7 @@ export default function HomePage() {
               <h1 className="h-display text-balance">
                 Connecting <span className="italic font-display text-brand-blue">Indian quality</span> to global markets.
               </h1>
-              <p className="lead mt-7 max-w-xl">Globeon Exim is a trusted Indian export house delivering premium agricultural, herbal and natural products to discerning buyers — with the documentation, compliance and reliability that international trade demands.</p>
+              <p className="lead mt-7 max-w-xl">Globeon Exim is a trusted Indian export house delivering premium agricultural, herbal and natural products to discerning buyers - with the documentation, compliance and reliability that international trade demands.</p>
               <div className="flex flex-wrap gap-3 mt-9">
                 <Link href="/products" className="btn-primary">Explore Products<ArrowUpRight className="w-4 h-4" /></Link>
                 <Link href="/contact" className="btn-outline">Request a Quote</Link>
@@ -107,16 +107,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FEATURED PRODUCTS — editorial */}
+      {/* FEATURED PRODUCTS - editorial */}
       <section className="section-pad bg-brand-paper relative">
         <div className="absolute top-0 left-0 number-display ml-[-20px] mt-[-30px] hidden lg:block">01</div>
         <div className="container relative">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
             <div className="max-w-2xl">
               <span className="eyebrow">Our Catalogue</span>
-              <h2 className="h-1 mt-5 text-balance">Selected with intent.<br/>Exported with precision.</h2>
+              <h2 className="mt-5 text-balance text-4xl md:text-5xl font-bold text-ink-900">Selected with intent.<br/>Exported with precision.</h2>
             </div>
-            <p className="text-ink-500 lg:max-w-sm">A focused portfolio of certified Indian agricultural and natural products — sourced direct from farm, processed to global specifications.</p>
+            <p className="text-ink-500 lg:max-w-sm">A focused portfolio of certified Indian agricultural and natural products - sourced direct from farm, processed to global specifications.</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((p, i) => (
@@ -129,7 +129,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* WHY CHOOSE — editorial cards */}
+      {/* WHY CHOOSE - editorial cards */}
       <section className="section-pad bg-white relative">
         <div className="container">
           <div className="grid lg:grid-cols-12 gap-10 mb-14">
@@ -138,7 +138,7 @@ export default function HomePage() {
               <h2 className="h-1 mt-5 text-balance">Six reasons global buyers trust us as their long-term sourcing partner.</h2>
             </div>
             <div className="lg:col-span-6 lg:col-start-7 flex items-end">
-              <p className="lead">From farm contracts to last-mile delivery, we run an integrated operation — so buyers get one accountable partner, not a chain of intermediaries.</p>
+              <p className="lead">From farm contracts to last-mile delivery, we run an integrated operation - so buyers get one accountable partner, not a chain of intermediaries.</p>
             </div>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-ink-900/10 rounded-2xl overflow-hidden border border-ink-900/10">
@@ -156,13 +156,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* PROCESS — timeline */}
-      <section className="section-pad bg-brand-paper">
-        <div className="container">
-          <div className="text-center max-w-2xl mx-auto mb-20">
+      {/* PROCESS - timeline */}
+          <div className="text-center max-w-2xl mx-auto mb-24">
             <span className="eyebrow mx-auto">How We Work</span>
             <h2 className="h-1 mt-5 text-balance">A transparent journey from farm to global port.</h2>
           </div>
+      <section className="section-pad bg-brand-paper">
+        <div className="container">
           <div className="relative">
             <div className="hidden lg:block absolute top-[34px] left-[10%] right-[10%] h-px bg-ink-900/10" />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-y-12 gap-x-8">
@@ -181,7 +181,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA BANNER — image w/ overlay */}
+      {/* CTA BANNER - image w/ overlay */}
       <section className="py-24">
         <div className="container">
           <div className="relative rounded-3xl overflow-hidden">
@@ -192,8 +192,8 @@ export default function HomePage() {
               <div className="container">
                 <div className="max-w-3xl text-white">
                   <span className="eyebrow-light">Begin a Partnership</span>
-                  <h2 className="font-display text-display-xl font-bold leading-[1.05] mt-5 text-balance">Ready to source quality products from India?</h2>
-                  <p className="text-white/70 mt-5 text-base md:text-lg max-w-xl">Get a personalized quote, free samples and complete export support from our team — within 24 hours.</p>
+                  <h2 className="font-display text-display-xl font-bold leading-[1.05] mt-5 text-balance text-white">Ready to source quality products from India?</h2>
+                  <p className="text-white/70 mt-5 text-base md:text-lg max-w-xl">Get a personalized quote, free samples and complete export support from our team - within 24 hours.</p>
                   <div className="flex flex-wrap gap-3 mt-8">
                     <Link href="/contact" className="btn-primary">Contact Us<ArrowUpRight className="w-4 h-4" /></Link>
                     <Link href="/products" className="btn-ghost-light">Browse Products</Link>

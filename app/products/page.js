@@ -30,8 +30,8 @@ export default function ProductsPage() {
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-3xl mx-auto text-center">
             <span className="eyebrow mx-auto">Looking for Something Specific?</span>
-            <h2 className="h-1 mt-5 text-balance">Custom sourcing for global buyers.</h2>
-            <p className="lead mt-6 mx-auto">Beyond our catalogue, we source a wide range of Indian agricultural commodities on demand — pulses, grains, oilseeds, spices, herbal extracts and more.</p>
+<h2 className="mt-5 text-balance text-4xl md:text-5xl font-bold text-ink-900">Custom sourcing for global buyers.</h2>
+            <p className="lead mt-6 mx-auto">Beyond our catalogue, we source a wide range of Indian agricultural commodities on demand - pulses, grains, oilseeds, spices, herbal extracts and more.</p>
             <a href="/contact" className="btn-primary mt-8">Send Custom Inquiry</a>
           </motion.div>
         </div>

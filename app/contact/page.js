@@ -30,7 +30,7 @@ export default function ContactPage() {
         <div className="container py-20 md:py-24 text-center max-w-3xl">
           <span className="eyebrow">Get In Touch</span>
           <h1 className="heading-xl mt-3">Let&apos;s Build a Global Partnership</h1>
-          <p className="lead mt-5">Share your requirements — our export team responds within 12 working hours with samples, quotes and a tailored proposal.</p>
+          <p className="lead mt-5">Share your requirements - our export team responds within 12 working hours with samples, quotes and a tailored proposal.</p>
         </div>
       </section>
 
@@ -38,7 +38,7 @@ export default function ContactPage() {
         <div className="container grid lg:grid-cols-5 gap-10">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="lg:col-span-2 space-y-5">
             {[
-              { icon: MapPin, label: 'Head Office', value: 'Globeon Exim HQ\nAhmedabad, Gujarat\nIndia — 380015', color: 'gradient-blue' },
+              { icon: MapPin, label: 'Head Office', value: 'Globeon Exim HQ\nHyderabad, Telangana\nIndia - 500001', color: 'gradient-blue' },
               { icon: Mail, label: 'Email Us', value: 'info@globeonexim.com\nexport@globeonexim.com', color: 'gradient-green', href: 'mailto:info@globeonexim.com' },
               { icon: Phone, label: 'Call Us', value: '+91 99999 99999\nMon–Sat, 9 AM – 7 PM IST', color: 'gradient-blue', href: 'tel:+919999999999' },
               { icon: MessageCircle, label: 'WhatsApp', value: 'Chat with our export team instantly', color: 'gradient-green', href: 'https://wa.me/919999999999' },
@@ -50,7 +50,7 @@ export default function ContactPage() {
             ))}
             <div className="card-elevated p-2 overflow-hidden">
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-slate-100">
-                <iframe title="Globeon Exim location" src="https://www.google.com/maps?q=Ahmedabad,Gujarat&output=embed" className="absolute inset-0 w-full h-full border-0" loading="lazy" />
+                <iframe title="Globeon Exim location" src="https://www.google.com/maps?q=Hyderabad,Telangana&output=embed" className="absolute inset-0 w-full h-full border-0" loading="lazy" />
               </div>
             </div>
           </motion.div>

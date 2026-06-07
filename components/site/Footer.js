@@ -14,7 +14,7 @@ export default function Footer() {
         <div className="grid lg:grid-cols-2 gap-10 items-center pb-14 mb-14 border-b border-white/10">
           <div>
             <span className="eyebrow-light">Stay in the loop</span>
-            <h3 className="font-display text-3xl md:text-4xl font-bold mt-4 text-balance">Market insights, harvest updates & export news — delivered quarterly.</h3>
+            <h3 className="font-display text-3xl md:text-4xl font-bold mt-4 text-balance text-white">Market insights, harvest updates & export news - delivered quarterly.</h3>
           </div>
           <form className="flex flex-col sm:flex-row gap-3 lg:justify-end">
             <input type="email" placeholder="your@company.com" className="flex-1 lg:max-w-sm h-12 px-4 rounded-md bg-white/10 border border-white/15 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-brand-green-light focus:border-transparent" />
@@ -26,7 +26,7 @@ export default function Footer() {
           <div className="lg:col-span-4">
             <Logo variant="light" />
             <p className="mt-6 text-white/60 text-sm leading-[1.7] max-w-sm">
-              An Indian export house connecting verified farmer networks with discerning global buyers — across 25+ countries on 5 continents. Built on quality, transparency and reliability.
+              An Indian export house connecting verified farmer networks with discerning global buyers - across 25+ countries on 5 continents. Built on quality, transparency and reliability.
             </p>
             <div className="flex gap-2 mt-7">
               {[Linkedin, Twitter, Facebook, Instagram].map((I, i) => (
@@ -60,7 +60,7 @@ export default function Footer() {
           <div className="lg:col-span-3">
             <h4 className="font-display font-semibold text-[13px] uppercase tracking-[0.14em] text-white mb-5">Headquarters</h4>
             <ul className="space-y-4 text-sm text-white/60">
-              <li className="flex gap-3"><MapPin className="w-4 h-4 mt-0.5 text-brand-green-light flex-shrink-0" /><span>Globeon Exim HQ,<br/>Ahmedabad, Gujarat,<br/>India — 380015</span></li>
+              <li className="flex gap-3"><MapPin className="w-4 h-4 mt-0.5 text-brand-green-light flex-shrink-0" /><span>Globeon Exim HQ,<br/>Hyderabad, Telangana<br/>India - 500001</span></li>
               <li className="flex gap-3"><Mail className="w-4 h-4 mt-0.5 text-brand-green-light flex-shrink-0" /><a href="mailto:info@globeonexim.com" className="hover:text-white">info@globeonexim.com</a></li>
               <li className="flex gap-3"><Phone className="w-4 h-4 mt-0.5 text-brand-green-light flex-shrink-0" /><a href="tel:+919999999999" className="hover:text-white">+91 99999 99999</a></li>
             </ul>

@@ -33,7 +33,7 @@ export default function WhyChooseUsPage() {
                   <span className="inline-block w-16 h-px bg-ink-900/15" />
                   <span className="text-[11px] uppercase tracking-[0.22em] text-ink-400 font-semibold">Pillar</span>
                 </div>
-                <h2 className="h-1 text-balance">{s.title}</h2>
+                <h2 className="mt-5 text-balance text-4xl md:text-5xl font-bold text-ink-900">{s.title}</h2>
                 <p className="text-ink-500 mt-6 leading-[1.8]">{s.desc}</p>
                 <ul className="mt-8 space-y-3.5">
                   {s.points.map(p => (
@@ -54,7 +54,7 @@ export default function WhyChooseUsPage() {
           <div className="relative rounded-3xl overflow-hidden gradient-deep p-12 md:p-16 text-white text-center">
             <div className="absolute inset-0 grid-pattern opacity-[0.08]" />
             <ShieldCheck className="w-10 h-10 mx-auto mb-4 text-brand-green-light" />
-            <h2 className="font-display text-display-lg font-bold text-balance">Partner with a name you can trust.</h2>
+            <h2 className="font-display text-display-lg font-bold text-balance text-white">Partner with a name you can trust.</h2>
             <p className="mt-5 text-white/70 max-w-2xl mx-auto">Hundreds of global buyers rely on Globeon Exim for consistent quality and reliable supply. Let&apos;s start a conversation.</p>
             <Link href="/contact" className="btn-primary mt-9">Request a Quote<ArrowUpRight className="w-4 h-4" /></Link>
           </div>

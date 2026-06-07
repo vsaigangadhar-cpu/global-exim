@@ -10,14 +10,14 @@ const poppins = Poppins({ subsets: ['latin'], weight: ['400','500','600','700','
 export const metadata = {
   metadataBase: new URL('https://globeonexim.com'),
   title: {
-    default: 'Globeon Exim — Indian Agricultural & Natural Product Exporter',
+    default: 'Globeon Exim - Indian Agricultural & Natural Product Exporter',
     template: '%s | Globeon Exim',
   },
-  description: 'Globeon Exim is a trusted Indian export company connecting premium agricultural and natural products — Moringa Powder, Turmeric Powder, herbs and commodities — to global markets.',
+  description: 'Globeon Exim is a trusted Indian export company connecting premium agricultural and natural products - Moringa Powder, Turmeric Powder, herbs and commodities - to global markets.',
   keywords: ['Export Company India','Agricultural Exporter','Moringa Exporter','Turmeric Exporter','Global Trade Company','Indian Spice Exporter','Herbal Products Export'],
   authors: [{ name: 'Globeon Exim' }],
   openGraph: {
-    title: 'Globeon Exim — Connecting Indian Quality to Global Markets',
+    title: 'Globeon Exim - Connecting Indian Quality to Global Markets',
     description: 'Trusted export partner for agricultural and natural products from India.',
     url: 'https://globeonexim.com',
     siteName: 'Globeon Exim',
@@ -26,7 +26,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Globeon Exim — Indian Agricultural Exporter',
+    title: 'Globeon Exim - Indian Agricultural Exporter',
     description: 'Trusted export partner for agricultural and natural products.',
   },
   robots: { index: true, follow: true },
