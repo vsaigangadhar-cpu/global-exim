@@ -2,186 +2,178 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ArrowRight, Globe2, ShieldCheck, Truck, Users, Sparkles, Award, Leaf, PackageCheck, FileCheck2, Ship, Search, CheckCircle2 } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { ArrowUpRight, Globe2, ShieldCheck, Truck, Users, Award, Leaf, PackageCheck, FileCheck2, Ship, Search, CheckCircle2, Compass, MapPin } from 'lucide-react';
 import { products } from '@/lib/products';
-
-function Counter({ to, suffix = '', duration = 2000 }) {
-  const [n, setN] = useState(0);
-  const ref = useRef(null);
-  const started = useRef(false);
-  useEffect(() => {
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting && !started.current) {
-          started.current = true;
-          const start = performance.now();
-          const step = (t) => {
-            const p = Math.min(1, (t - start) / duration);
-            setN(Math.floor(p * to));
-            if (p < 1) requestAnimationFrame(step);
-          };
-          requestAnimationFrame(step);
-        }
-      });
-    }, { threshold: 0.3 });
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, [to, duration]);
-  return <span ref={ref}>{n}{suffix}</span>;
-}
+import Counter from '@/components/site/Counter';
+import Marquee from '@/components/site/Marquee';
+import ProductCard from '@/components/site/ProductCard';
 
 const stats = [
-  { value: 25, suffix: '+', label: 'Countries Served', icon: Globe2 },
-  { value: 50, suffix: '+', label: 'Quality Products', icon: Award },
-  { value: 100, suffix: '%', label: 'On-Time Delivery', icon: Truck },
-  { value: 500, suffix: '+', label: 'Happy Clients', icon: Users },
+  { value: 25, suffix: '+', label: 'Countries Served' },
+  { value: 50, suffix: '+', label: 'Quality Products' },
+  { value: 99, suffix: '%', label: 'On-Time Delivery' },
+  { value: 500, suffix: '+', label: 'Global Buyers' },
 ];
 
-const whyChoose = [
-  { icon: Award, title: 'Premium Quality', desc: 'Hand-picked, lab-tested produce that meets the highest international standards.' },
-  { icon: Globe2, title: 'Export Expertise', desc: 'Decade of expertise navigating documentation, compliance and global logistics.' },
-  { icon: Truck, title: 'Timely Delivery', desc: 'Reliable supply chain partners ensuring on-schedule shipments worldwide.' },
-  { icon: Ship, title: 'Global Network', desc: 'Trusted partners across 25+ countries spanning 5 continents.' },
-  { icon: Users, title: 'Customer Focus', desc: 'Dedicated account managers and flexible MOQs tailored to your business.' },
-  { icon: ShieldCheck, title: 'Trusted Partnerships', desc: 'Long-term relationships with farmers, processors and global buyers.' },
+const pillars = [
+  { num: '01', icon: Award, title: 'Premium Quality', desc: 'Hand-picked, lab-tested produce that meets the highest international food and pharma standards.' },
+  { num: '02', icon: Globe2, title: 'Export Expertise', desc: 'A decade of expertise navigating documentation, compliance and global maritime logistics.' },
+  { num: '03', icon: Truck, title: 'Timely Delivery', desc: 'Reliable supply chain partners ensuring on-schedule shipments to any global port.' },
+  { num: '04', icon: Ship, title: 'Global Network', desc: 'Trusted partners across 25+ countries spanning five continents and growing.' },
+  { num: '05', icon: Users, title: 'Customer Focus', desc: 'Dedicated account managers, flexible MOQs and proposals tailored to your business.' },
+  { num: '06', icon: ShieldCheck, title: 'Trusted Partnerships', desc: 'Long-term relationships with FPOs, processors and global wholesale buyers.' },
 ];
 
 const processSteps = [
-  { icon: Search, title: 'Product Sourcing', desc: 'Direct partnerships with verified farmers across India\'s finest agricultural belts.' },
-  { icon: ShieldCheck, title: 'Quality Verification', desc: 'Multi-stage lab testing for purity, potency, pesticides and heavy metals.' },
-  { icon: PackageCheck, title: 'Export Packaging', desc: 'Food-grade, durable, customizable packaging for long-haul global shipping.' },
-  { icon: FileCheck2, title: 'Export Documentation', desc: 'Complete handling of CoA, phyto, FSSAI, customs and country-specific paperwork.' },
-  { icon: Ship, title: 'Global Delivery', desc: 'FCL, LCL, air freight — we deliver to your port, warehouse or doorstep worldwide.' },
+  { icon: Search, title: 'Sourcing', desc: 'Direct partnerships with verified Indian farmer producer organizations.' },
+  { icon: ShieldCheck, title: 'Quality Verification', desc: 'Multi-stage lab testing for purity, potency, pesticides and metals.' },
+  { icon: PackageCheck, title: 'Packaging', desc: 'Food-grade, durable, fully customizable packaging for long-haul shipping.' },
+  { icon: FileCheck2, title: 'Documentation', desc: 'CoA, phyto-sanitary, customs and country-specific compliance handled.' },
+  { icon: Ship, title: 'Global Delivery', desc: 'FCL, LCL, air freight — to your port, warehouse or doorstep worldwide.' },
 ];
 
 export default function HomePage() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative overflow-hidden gradient-soft">
-        <div className="absolute inset-0 grid-pattern opacity-60" />
-        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-brand-blue-light/10 blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] rounded-full bg-brand-green/10 blur-3xl" />
-        <div className="container relative pt-16 md:pt-24 pb-20 md:pb-28">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-brand-green/20 shadow-soft mb-6">
-                <span className="w-2 h-2 rounded-full bg-brand-green animate-pulse" />
-                <span className="text-xs font-semibold text-brand-blue">IEC Certified • APEDA Registered Exporter</span>
+      {/* HERO — editorial split */}
+      <section className="relative overflow-hidden bg-brand-paper">
+        <div className="absolute inset-0 grid-pattern-soft opacity-60" />
+        <div className="absolute top-0 right-0 w-[55%] h-full bg-gradient-to-bl from-accent/50 to-transparent" />
+
+        <div className="container relative pt-14 md:pt-20 pb-0">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-end">
+            <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }} className="lg:col-span-7 pb-10 lg:pb-20">
+              <div className="flex items-center gap-3 mb-8">
+                <span className="inline-block w-12 h-px bg-brand-green" />
+                <span className="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand-green">Est. India · Trading Worldwide</span>
               </div>
-              <h1 className="heading-xl">Connecting Indian Quality to <span className="relative inline-block"><span className="relative z-10 text-brand-green">Global Markets</span><svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none"><path d="M2 9C40 3 80 3 120 6C160 9 180 8 198 5" stroke="#4CAF50" strokeWidth="3" strokeLinecap="round" /></svg></span></h1>
-              <p className="lead mt-6 max-w-xl">Trusted Export Partner for Agricultural and Natural Products. From Indian farms to international tables — delivered with quality, transparency and care.</p>
-              <div className="flex flex-wrap gap-4 mt-8">
-                <Link href="/products" className="btn-primary">Explore Products<ArrowRight className="w-4 h-4" /></Link>
-                <Link href="/contact" className="btn-outline">Contact Us</Link>
+              <h1 className="h-display text-balance">
+                Connecting <span className="italic font-display text-brand-blue">Indian quality</span> to global markets.
+              </h1>
+              <p className="lead mt-7 max-w-xl">Globeon Exim is a trusted Indian export house delivering premium agricultural, herbal and natural products to discerning buyers — with the documentation, compliance and reliability that international trade demands.</p>
+              <div className="flex flex-wrap gap-3 mt-9">
+                <Link href="/products" className="btn-primary">Explore Products<ArrowUpRight className="w-4 h-4" /></Link>
+                <Link href="/contact" className="btn-outline">Request a Quote</Link>
               </div>
-              <div className="flex flex-wrap items-center gap-6 mt-10 pt-8 border-t border-slate-200">
-                {['ISO Certified','HACCP','USDA Organic','FSSAI'].map(b => (
-                  <div key={b} className="flex items-center gap-2 text-sm text-slate-600"><CheckCircle2 className="w-4 h-4 text-brand-green" />{b}</div>
+              <div className="mt-12 pt-8 border-t border-ink-900/10 flex flex-wrap items-center gap-8">
+                {[{n:'ISO',l:'22000 : 2018'},{n:'HACCP',l:'Certified'},{n:'USDA',l:'Organic'},{n:'FSSAI',l:'Licensed'}].map(b => (
+                  <div key={b.n} className="flex items-center gap-2.5">
+                    <div className="w-9 h-9 rounded-full border border-ink-900/10 flex items-center justify-center"><CheckCircle2 className="w-4 h-4 text-brand-green" /></div>
+                    <div className="leading-tight"><p className="font-display font-bold text-ink-900 text-sm">{b.n}</p><p className="text-[10.5px] uppercase tracking-[0.15em] text-ink-400">{b.l}</p></div>
+                  </div>
                 ))}
               </div>
             </motion.div>
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.2 }} className="relative">
-              <div className="relative rounded-3xl overflow-hidden shadow-card aspect-[4/5] md:aspect-[5/6]">
-                <Image src="https://images.unsplash.com/photo-1650056282577-7a2d707288a9?crop=entropy&cs=srgb&fm=jpg&q=85" alt="Global trade and shipping" fill className="object-cover" priority />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-blue/40 via-transparent to-transparent" />
+
+            <motion.div initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }} className="lg:col-span-5 relative pb-16 lg:pb-0">
+              <div className="img-frame aspect-[4/5] shadow-elev">
+                <Image src="https://images.unsplash.com/photo-1650056282577-7a2d707288a9?crop=entropy&cs=srgb&fm=jpg&q=85" alt="Global trade and shipping" fill className="object-cover duotone-blue" priority />
+                <div className="absolute inset-0 bg-gradient-to-tr from-brand-blue/40 via-transparent to-transparent" />
+                <div className="absolute top-5 left-5 right-5 flex items-start justify-between text-white">
+                  <span className="text-[10px] uppercase tracking-[0.25em] font-semibold">Port of Mundra → World</span>
+                  <Compass className="w-5 h-5" />
+                </div>
               </div>
-              <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.6 }} className="absolute -left-4 md:-left-10 top-10 bg-white rounded-2xl shadow-card p-4 flex items-center gap-3 max-w-[200px]">
-                <div className="w-12 h-12 rounded-xl gradient-green flex items-center justify-center"><Leaf className="w-6 h-6 text-white" /></div>
-                <div><p className="text-xs text-slate-500">Premium</p><p className="font-display font-bold text-brand-blue">Farm Fresh</p></div>
-              </motion.div>
-              <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.8 }} className="absolute -right-4 md:-right-6 bottom-10 bg-white rounded-2xl shadow-card p-4 flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl gradient-blue flex items-center justify-center"><Globe2 className="w-6 h-6 text-white" /></div>
-                <div><p className="text-xs text-slate-500">Exporting to</p><p className="font-display font-bold text-brand-blue">25+ Countries</p></div>
+              <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.7 }} className="absolute left-4 right-4 sm:right-auto sm:left-auto sm:-left-2 lg:-left-10 -bottom-2 lg:-bottom-12 bg-white rounded-xl shadow-card p-5 sm:min-w-[220px] border border-ink-900/5 z-10">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-md gradient-green flex items-center justify-center"><Leaf className="w-5 h-5 text-white" /></div>
+                  <div><p className="text-[10px] uppercase tracking-[0.15em] text-ink-400 font-semibold">Origin</p><p className="font-display font-bold text-ink-900">Indian Farms</p></div>
+                </div>
+                <div className="h-px bg-ink-900/10 my-3" />
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-md gradient-blue flex items-center justify-center"><MapPin className="w-5 h-5 text-white" /></div>
+                  <div><p className="text-[10px] uppercase tracking-[0.15em] text-ink-400 font-semibold">Destination</p><p className="font-display font-bold text-ink-900">25+ Countries</p></div>
+                </div>
               </motion.div>
             </motion.div>
           </div>
         </div>
+
+        {/* Marquee ticker */}
+        <div className="relative mt-16 lg:mt-24 py-7 border-y border-ink-900/10 bg-white">
+          <Marquee items={['Dubai','Rotterdam','Hamburg','Singapore','New York','London','Tokyo','Sydney','Johannesburg','São Paulo','Toronto','Riyadh']} />
+        </div>
       </section>
 
       {/* STATS */}
-      <section className="py-14 bg-white border-y border-slate-100">
-        <div className="container grid grid-cols-2 lg:grid-cols-4 gap-8">
+      <section className="section-pad-sm bg-white">
+        <div className="container grid grid-cols-2 lg:grid-cols-4 gap-y-10 lg:gap-0 lg:divide-x divide-ink-900/10">
           {stats.map((s, i) => (
-            <motion.div key={s.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="text-center">
-              <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-blue-50 flex items-center justify-center"><s.icon className="w-6 h-6 text-brand-blue" /></div>
-              <div className="font-display text-4xl md:text-5xl font-bold text-brand-blue"><Counter to={s.value} suffix={s.suffix} /></div>
-              <p className="text-sm text-slate-600 mt-1 font-medium">{s.label}</p>
+            <motion.div key={s.label} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="px-2 lg:px-8 text-center lg:text-left">
+              <div className="font-display text-5xl md:text-6xl font-bold text-ink-900 tracking-tight leading-none"><Counter to={s.value} suffix={s.suffix} /></div>
+              <p className="text-[11px] uppercase tracking-[0.2em] text-ink-400 font-semibold mt-4">{s.label}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* FEATURED PRODUCTS */}
-      <section className="section-pad">
-        <div className="container">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="eyebrow">Our Specialty</span>
-            <h2 className="heading-lg mt-3">Featured Products</h2>
-            <p className="lead mt-4">Premium, lab-tested agricultural and natural products sourced directly from Indian farmlands.</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
-            {products.map((p, i) => (
-              <motion.div key={p.slug} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
-                <Link href={`/products/${p.slug}`} className="card-elevated block group overflow-hidden h-full">
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <Image src={p.image} alt={p.name} fill className="object-cover group-hover:scale-110 transition-transform duration-700" sizes="(max-width: 768px) 100vw, 33vw" />
-                    <div className={`absolute inset-0 bg-gradient-to-tr ${p.color} opacity-0 group-hover:opacity-30 transition-opacity`} />
-                  </div>
-                  <div className="p-6">
-                    <p className="eyebrow">{p.tagline}</p>
-                    <h3 className="font-display text-2xl font-bold text-brand-blue mt-2 group-hover:text-brand-green transition-colors">{p.name}</h3>
-                    <p className="text-slate-600 text-sm mt-3 leading-relaxed line-clamp-3">{p.short}</p>
-                    <span className="inline-flex items-center gap-1.5 mt-5 text-brand-green font-semibold text-sm group-hover:gap-3 transition-all">View Details <ArrowRight className="w-4 h-4" /></span>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* WHY CHOOSE */}
-      <section className="section-pad bg-gradient-to-b from-slate-50 to-white">
-        <div className="container">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="eyebrow">The Globeon Advantage</span>
-            <h2 className="heading-lg mt-3">Why Choose Globeon Exim</h2>
-            <p className="lead mt-4">Six reasons global buyers trust us as their long-term sourcing partner from India.</p>
+      {/* FEATURED PRODUCTS — editorial */}
+      <section className="section-pad bg-brand-paper relative">
+        <div className="absolute top-0 left-0 number-display ml-[-20px] mt-[-30px] hidden lg:block">01</div>
+        <div className="container relative">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
+            <div className="max-w-2xl">
+              <span className="eyebrow">Our Catalogue</span>
+              <h2 className="h-1 mt-5 text-balance">Selected with intent.<br/>Exported with precision.</h2>
+            </div>
+            <p className="text-ink-500 lg:max-w-sm">A focused portfolio of certified Indian agricultural and natural products — sourced direct from farm, processed to global specifications.</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {whyChoose.map((w, i) => (
-              <motion.div key={w.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="card-elevated p-7">
-                <div className="w-14 h-14 rounded-xl gradient-blue flex items-center justify-center mb-5"><w.icon className="w-7 h-7 text-white" /></div>
-                <h3 className="font-display text-xl font-bold text-brand-blue">{w.title}</h3>
-                <p className="text-slate-600 text-sm mt-3 leading-relaxed">{w.desc}</p>
+            {products.map((p, i) => (
+              <ProductCard key={p.slug} product={p} index={i} />
+            ))}
+          </div>
+          <div className="mt-12 flex justify-center">
+            <Link href="/products" className="btn-outline">View Full Catalogue<ArrowUpRight className="w-4 h-4" /></Link>
+          </div>
+        </div>
+      </section>
+
+      {/* WHY CHOOSE — editorial cards */}
+      <section className="section-pad bg-white relative">
+        <div className="container">
+          <div className="grid lg:grid-cols-12 gap-10 mb-14">
+            <div className="lg:col-span-5">
+              <span className="eyebrow">The Globeon Standard</span>
+              <h2 className="h-1 mt-5 text-balance">Six reasons global buyers trust us as their long-term sourcing partner.</h2>
+            </div>
+            <div className="lg:col-span-6 lg:col-start-7 flex items-end">
+              <p className="lead">From farm contracts to last-mile delivery, we run an integrated operation — so buyers get one accountable partner, not a chain of intermediaries.</p>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-ink-900/10 rounded-2xl overflow-hidden border border-ink-900/10">
+            {pillars.map((w, i) => (
+              <motion.div key={w.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }} className="bg-white p-8 lg:p-10 group hover:bg-brand-paper transition-colors duration-500">
+                <div className="flex items-start justify-between">
+                  <span className="font-display font-bold text-brand-green text-sm tracking-[0.25em]">{w.num}</span>
+                  <div className="w-11 h-11 rounded-full bg-accent flex items-center justify-center group-hover:bg-brand-blue group-hover:text-white transition-all"><w.icon className="w-5 h-5 text-brand-blue group-hover:text-white" /></div>
+                </div>
+                <h3 className="font-display text-xl font-bold text-ink-900 mt-12">{w.title}</h3>
+                <p className="text-ink-500 text-sm mt-3 leading-[1.7]">{w.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* PROCESS */}
-      <section className="section-pad">
+      {/* PROCESS — timeline */}
+      <section className="section-pad bg-brand-paper">
         <div className="container">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="eyebrow">How We Work</span>
-            <h2 className="heading-lg mt-3">Our Export Process</h2>
-            <p className="lead mt-4">From farm to global port — a transparent, five-step journey of quality and accountability.</p>
+          <div className="text-center max-w-2xl mx-auto mb-20">
+            <span className="eyebrow mx-auto">How We Work</span>
+            <h2 className="h-1 mt-5 text-balance">A transparent journey from farm to global port.</h2>
           </div>
           <div className="relative">
-            <div className="hidden lg:block absolute top-12 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-brand-blue via-brand-green to-brand-blue" />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+            <div className="hidden lg:block absolute top-[34px] left-[10%] right-[10%] h-px bg-ink-900/10" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-y-12 gap-x-8">
               {processSteps.map((s, i) => (
-                <motion.div key={s.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.12 }} className="text-center relative">
-                  <div className="relative mx-auto w-24 h-24 mb-5">
-                    <div className="absolute inset-0 rounded-full gradient-green opacity-10" />
-                    <div className="absolute inset-2 rounded-full bg-white shadow-card flex items-center justify-center"><s.icon className="w-9 h-9 text-brand-green" /></div>
-                    <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full gradient-blue text-white text-sm font-bold flex items-center justify-center shadow-soft">{i + 1}</div>
+                <motion.div key={s.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="text-center">
+                  <div className="relative mx-auto w-[68px] h-[68px] mb-6">
+                    <div className="absolute inset-0 rounded-full bg-white shadow-card flex items-center justify-center border border-ink-900/5"><s.icon className="w-7 h-7 text-brand-blue" /></div>
+                    <div className="absolute -top-1.5 -right-1.5 w-7 h-7 rounded-full bg-brand-green text-white text-[11px] font-bold flex items-center justify-center">{i + 1}</div>
                   </div>
-                  <h3 className="font-display font-bold text-brand-blue">{s.title}</h3>
-                  <p className="text-slate-600 text-sm mt-2 leading-relaxed">{s.desc}</p>
+                  <h3 className="font-display font-bold text-ink-900 text-base uppercase tracking-[0.08em]">{s.title}</h3>
+                  <p className="text-ink-500 text-sm mt-3 leading-[1.7] max-w-[200px] mx-auto">{s.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -189,19 +181,25 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA BANNER */}
-      <section className="py-20">
+      {/* CTA BANNER — image w/ overlay */}
+      <section className="py-24">
         <div className="container">
-          <div className="relative rounded-3xl overflow-hidden gradient-blue p-10 md:p-16">
-            <div className="absolute inset-0 grid-pattern opacity-10" />
-            <div className="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-brand-green-light/20 blur-3xl" />
-            <div className="relative flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
-              <div className="max-w-2xl text-white">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 mb-5"><Sparkles className="w-4 h-4" /><span className="text-xs font-semibold uppercase tracking-wider">Let&apos;s Connect</span></div>
-                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">Ready to Source Quality Products from India?</h2>
-                <p className="text-white/80 mt-4 text-lg">Get a personalized quote, samples and complete export support from our team within 24 hours.</p>
+          <div className="relative rounded-3xl overflow-hidden">
+            <Image src="https://images.pexels.com/photos/24246926/pexels-photo-24246926.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900" alt="Global shipping" width={2000} height={900} className="w-full h-[420px] md:h-[480px] object-cover" />
+            <div className="absolute inset-0 gradient-deep opacity-90" />
+            <div className="absolute inset-0 grid-pattern opacity-[0.08]" />
+            <div className="absolute inset-0 flex items-center">
+              <div className="container">
+                <div className="max-w-3xl text-white">
+                  <span className="eyebrow-light">Begin a Partnership</span>
+                  <h2 className="font-display text-display-xl font-bold leading-[1.05] mt-5 text-balance">Ready to source quality products from India?</h2>
+                  <p className="text-white/70 mt-5 text-base md:text-lg max-w-xl">Get a personalized quote, free samples and complete export support from our team — within 24 hours.</p>
+                  <div className="flex flex-wrap gap-3 mt-8">
+                    <Link href="/contact" className="btn-primary">Contact Us<ArrowUpRight className="w-4 h-4" /></Link>
+                    <Link href="/products" className="btn-ghost-light">Browse Products</Link>
+                  </div>
+                </div>
               </div>
-              <Link href="/contact" className="bg-white text-brand-blue hover:bg-brand-green-light hover:text-white font-semibold px-8 py-4 rounded-xl shadow-card inline-flex items-center gap-2 transition-all hover:-translate-y-0.5 whitespace-nowrap">Contact Us<ArrowRight className="w-4 h-4" /></Link>
             </div>
           </div>
         </div>
