@@ -69,7 +69,7 @@ export default function AboutPage() {
       <section className="section-pad bg-white">
         <div className="container">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
-            <div><span className="eyebrow">Core Values</span><h2 className="h-1 mt-5 text-balance">Principles that define us.</h2></div>
+            <div><span className="eyebrow">Core Values</span><h2 className="mt-5 text-balance text-4xl md:text-5xl font-bold text-ink-900">Principles that define us.</h2></div>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {values.map((v, i) => (

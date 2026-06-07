@@ -10,19 +10,38 @@ export default function ContactPage() {
   const [form, setForm] = useState({ name: '', company: '', email: '', phone: '', country: '', product: '', message: '' });
   const onChange = (k) => (e) => setForm({ ...form, [k]: e.target.value });
 
-  const submit = async (e) => {
-    e.preventDefault();
-    setStatus('loading');
-    // Web3Forms-ready integration: drop in your access_key to start receiving emails.
-    // For MVP we simulate submission so demo works end-to-end.
-    try {
-      await new Promise(r => setTimeout(r, 1200));
+  
+
+const submit = async (e) => {
+  e.preventDefault();
+  setStatus('loading');
+
+  try {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        access_key: "3a07bfbb-1861-4592-b99a-318884fb1c1a",
+        subject: "New Globeon Exim Inquiry",
+        ...form,
+      }),
+    });
+    const result = await response.json();
+
+    console.log(result);
+    if (result.success) {
       setStatus('success');
-      setForm({ name: '', company: '', email: '', phone: '', country: '', product: '', message: '' });
-    } catch {
+    } else {
       setStatus('error');
     }
-  };
+  } catch (error) {
+    console.error(error);
+    setStatus('error');
+  }
+};
 
   return (
     <>

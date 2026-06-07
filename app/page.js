@@ -135,7 +135,7 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-12 gap-10 mb-14">
             <div className="lg:col-span-5">
               <span className="eyebrow">The Globeon Standard</span>
-              <h2 className="h-1 mt-5 text-balance">Six reasons global buyers trust us as their long-term sourcing partner.</h2>
+              <h2 className="mt-5 text-balance text-4xl md:text-5xl font-bold text-ink-900">Six reasons global buyers trust us as their long-term sourcing partner.</h2>
             </div>
             <div className="lg:col-span-6 lg:col-start-7 flex items-end">
               <p className="lead">From farm contracts to last-mile delivery, we run an integrated operation - so buyers get one accountable partner, not a chain of intermediaries.</p>
